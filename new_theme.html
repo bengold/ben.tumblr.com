@@ -29,16 +29,45 @@
             img { 
                 width: 100%;
             }
-                #container {
-                    width: 780px;
-                    margin: 0 auto 20px auto;
-                    position: relative;
-                }
-                header {
-                    width: 740px;
+            #container {
+                width: 780px;
+                margin: 0 auto 20px auto;
+                position: relative;
+            }
+            header {
+                width: 740px;
+                float: left;
+                margin: 20px;
+            }
+                header h1.title {
+                    font-size: 18px;
+                    font-weight: bold;
                     float: left;
-                    margin: 20px;
                 }
+                header h1.title a {
+                    color: rgba(0,0,0,1);
+                    text-decoration: none;
+                }
+            nav {
+                float: right;
+                padding: 0 0 0 15px;
+            }
+                nav h2 {
+                    text-decoration: underline;
+                    font-size: 13px;
+                    font-weight: normal;
+                }
+                nav h2 a {
+                    color: rgba(0,0,0,1);
+                }
+            .blog {
+                float: left;
+                width: 780px;
+                margin: 0;
+                margin: 0;
+                border-bottom: 1px solid rgba(224,228,232,1);
+            }
+
         </style>
 
 
@@ -60,6 +89,16 @@
     <body>
         <div id="container">
             <header>
+                <h1 class="title"><a href="/">{Title}</a></h1>
+                <nav>
+                    <h2><a href="/ask">Ask</a></h2>
+                    <h2><a href="/archive">Archive</a></h2>
+                    {block:HasPages} 
+                        {block:Pages}
+                            <h2><a href="{URL}">{Label}</a></h2>
+                        {/block:Pages}
+                    {/block:HasPages}
+                </nav>
             </header>
             <section class="blog">
                 {block:Posts}
@@ -202,6 +241,16 @@
                     {/block:Answer}
                 {/block:Posts}
             </section>
+            <div class="pagination">
+                {block:Pagination}
+                    {block:NextPage}
+                        <a href="{NextPage}">Older</a>
+                    {/block:NextPage}
+                    {block:PreviousPage}
+                        <a href="{PreviousPage}">Newer</a>
+                    {/block:PreviousPage}
+                {/block:Pagination}
+            </div>
         </div>
     </body>
 </html>

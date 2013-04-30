@@ -60,7 +60,6 @@
                                     <img src="{PhotoURL-1280}" alt="{PhotoAlt}">
                                 {LinkCloseTag}
                             </div>
-
                             {block:Caption}
                             <div class="caption media">{Caption}</div>
                             {/block:Caption}
@@ -74,7 +73,6 @@
                                     <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
                                 {LinkCloseTag}
                             </div>
-
                             {block:Caption}
                                 <div class="caption media">{Caption}</div>
                             {/block:Caption}
@@ -82,72 +80,88 @@
                     {/block:Panorama}
 
                     {block:Photoset}
-                        {Photoset}
-
-                        {block:Caption}
-                            <div class="caption">{Caption}</div>
-                        {/block:Caption}
+                        <article class="photo">
+                            {Photoset}
+                            {block:Caption}
+                                <div class="caption">{Caption}</div>
+                            {/block:Caption}
+                        </article>
                     {/block:Photoset}
 
                     {block:Quote}
-                    <li class="post quote">
-                    "{Quote}"
-
-                    {block:Source}
-                    <div class="source">{Source}</div>
-                    {/block:Source}
-                    </li>
+                        <article class="quote">
+                            <h3>&quot;{Quote}&quot;</h3>
+                            <div class="caption">
+                                <table border="0"cellpadding="0" cellspacing="0" width="100%">
+                                    <tbody>
+                                        <tr>
+                                            <td valign="top" style="width:1px; padding: 0px 10px 0px 20px;">&mdash;</td>
+                                            <td valign="top">{Source}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </article>
                     {/block:Quote}
 
                     {block:Link}
-                    <li class="post link">
-                    <a href="{URL}" class="link" {Target}>{Name}</a>
-
-                    {block:Description}
-                    <div class="description">{Description}</div>
-                    {/block:Description}
-                    </li>
+                        <article class="quote">
+                            <h3><a href="{URL}" target="{Target}" class="link">{Name}</a></h3>
+                            {block:Description}
+                                <div class="caption">{Description}</div>
+                            {/block:Description}
+                        </article>
                     {/block:Link}
 
                     {block:Chat}
-                    <li class="post chat">
-                    {block:Title}
-                    <h3><a href="{Permalink}">{Title}</a></h3>
-                    {/block:Title}
-
-                    <ul class="chat">
-                    {block:Lines}
-                    <li class="{Alt} user_{UserNumber}">
-                    {block:Label}
-                    <span class="label">{Label}</span>
-                    {/block:Label}
-
-                    {Line}
-                    </li>
-                    {/block:Lines}
-                    </ul>
-                    </li>
+                        <article class="chat">
+                            {block:Title}
+                                <h3>{Title}</h3>
+                            {/block:Title}
+                            <ul class="chat">
+                                {block:Lines}
+                                    <li class="line">
+                                        {block:Label}<strong>{Label}</strong>{/block:Label}    &nbsp; {Line}
+                                    </li>
+                                {/block:Lines}
+                            </ul>
+                        </article>
                     {/block:Chat}
 
                     {block:Video}
-                    <li class="post video">
-                    {Video-500}
-
-                    {block:Caption}
-                    <div class="caption">{Caption}</div>
-                    {/block:Caption}
-                    </li>
+                        <article class="video">
+                            {Video-700}
+                            {block:Caption}
+                                <div class="caption media">{Caption}</div>
+                            {/block:Caption}
+                        </article>
                     {/block:Video}
 
                     {block:Audio}
-                    <li class="post audio">
-                    {AudioPlayerBlack}
+                        <article class="audio">
+                            {block:AudioPlayer}
+                                <div class="audio">
+                                    {AudioPlayerBlack}
+                                </div>
+                            {/block:AudioPlayer}
 
-                    {block:Caption}
-                    <div class="caption">{Caption}</div>
-                    {/block:Caption}
-                    </li>
+                            {block:AudioEmbed}
+                                {AudioEmbed}
+                            {/block:AudioEmbed}
+
+                            {block:Caption}
+                                <div class="caption media">{Caption}</div>
+                            {/block:Caption}
+                        </article>
                     {/block:Audio}
+
+                    {block:Answer}
+                        <article class="answer">
+                            <div class="asking">{Asker} asked: {Question}</div>
+                            <br>
+                            <div class="caption"><p>{Answer}</p></div>
+                        </article>
+                    {/block:Answer}
                 {/block:Posts}
             </section>
         </div>

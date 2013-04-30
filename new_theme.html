@@ -68,25 +68,25 @@
                     {/block:Photo}
 
                     {block:Panorama}
-                    <li class="post panorama">
-                    {LinkOpenTag}
-                    <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
-                    {LinkCloseTag}
+                        <article class="photo">
+                            <div class="image">
+                                {LinkOpenTag}
+                                    <img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
+                                {LinkCloseTag}
+                            </div>
 
-                    {block:Caption}
-                    <div class="caption">{Caption}</div>
-                    {/block:Caption}
-                    </li>
+                            {block:Caption}
+                                <div class="caption media">{Caption}</div>
+                            {/block:Caption}
+                        </article>
                     {/block:Panorama}
 
                     {block:Photoset}
-                    <li class="post photoset">
-                    {Photoset-500}
+                        {Photoset}
 
-                    {block:Caption}
-                    <div class="caption">{Caption}</div>
-                    {/block:Caption}
-                    </li>
+                        {block:Caption}
+                            <div class="caption">{Caption}</div>
+                        {/block:Caption}
                     {/block:Photoset}
 
                     {block:Quote}
